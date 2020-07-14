@@ -1,0 +1,6 @@
+[core]
+    remote = s3imse-civil
+['remote "s3imse-civil"']
+    url = s3://imse-civil
+    region = eu-west-1
+    profile = imse
