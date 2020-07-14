@@ -21,10 +21,10 @@ Constraints: all images must remain on-premise. Application must be easy to inst
     
 
 # Roadmap
-- [] Look harder to see if something already exists!
-- [] Think of a nice deploy/install form factor.
-- [] Test various image retrieval techniques to see what pathologies may be hard to solve.
-- [] Think of a commercial angle that could make this project worth doing (from a financial perspective).
+- [ ] Look harder to see if something already exists!
+- [ ] Think of a nice deploy/install form factor.
+- [ ] Test various image retrieval techniques to see what pathologies may be hard to solve.
+- [ ] Think of a commercial angle that could make this project worth doing (from a financial perspective).
 
 # Comments
 It feels like there must be a need for image search in a number of small and medium size businesses. I know postgres based image search options but that still needs these rather small or naive teams to integrate such a tool into the way they work. 
@@ -33,5 +33,14 @@ Perhaps there are  opportunities in doing search on other high dimension data (m
 Unfortunately all these kinds of issues seem to boil down to just a lot of good old software engineering and design. Perhaps the better option is to build database 'plugins' that would allow any dev house to leverage recent ML techniques (unsupervised).
 
 # Basic usage
-1. Open cloned repo in remote container. 
-2. Open in 
+0. Modify the mount points in `.devcontainer/devcontainer.json
+`
+
+        `"mounts": [
+                "source=/home/{USER}/.cache/torch,target=/home/user/.cache/torch,type=bind,consistency=cached", 
+                "source=/home/{USER}/.aws,target=/home/user/.aws,type=bind,consistency=cached"
+            ],`
+1. Open in remote container. 
+2. Paste aws creds in `~/.aws/credentials`
+3. `dvc pull`
+4. `cd src && streamlit run app.py`
