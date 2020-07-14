@@ -46,6 +46,7 @@ class BasicFinder:
         self.tree:Optional[spatial.KDTree] = None
 
     def batch_images(self, batch_size:int = 200)->torch.Tensor:
+        # Note: currently only a single batch is indexed. 
         input_tensors = []
 
         for image_batch in chunk(self.image_pths, batch_size):
