@@ -44,3 +44,12 @@ Unfortunately all these kinds of issues seem to boil down to just a lot of good 
 2. Paste aws creds in `~/.aws/credentials`
 3. `dvc pull`
 4. `cd src && streamlit run app.py`
+
+
+## CLI
+There might appear a few cli tools that do aspects of the problem. 
+### pix2map
+Takes a folder of pictures and generates a `.kml` file and `thumbnail/*` folder for easy viewing
+1. `pip install git+https://github.com/benjaminDev/imse.git@cli-gps-extractor'#egg=pkg&subdirectory=src'`
+2. `pix2map -h`
+3. `pix2map -i path/to/images -e png -o holiday-photos`
