@@ -4,6 +4,8 @@ from pathlib import Path
 
 import streamlit as st
 import torch
+import pandas as pd
+import numpy as np
 # %%
 from PIL import Image
 from torch import nn
@@ -19,11 +21,24 @@ bf = BasicFinder(data_dir=data_dir)
 
 st.title("Image Search")
 
+st.sidebar.title('Features')
+recursive = st.sidebar.radio("Search folders recursivly?", ("Yes", "No"))
+
+k=st.sidebar.slider('Select top K to find', 0, 10, 5)
+n=st.sidebar.slider('Select bottom n to find', 0, 10, 5)
+
+
+map_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+    columns=['lat', 'lon'])
+
+st.map(map_data)
+pth = Path(".")
+st.text_input(f"Select a folder: {pth.absolute()}")
 
 st.write(
     "Select a query image and find the most similar match."
 )
-k=st.slider('Select top K to find', 0, 10, 5)
 if len(files) == 0:
     st.write(
         "Put some video files in your home directory (%s) to activate this player."
