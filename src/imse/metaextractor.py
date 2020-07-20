@@ -34,11 +34,13 @@ def get_gps(image_pth:Path)->Tuple[Optional[float], Optional[float]]:
     gps_data = list(gps_info.values())[0]
     gps_data = {GPSTAGS.get(key, key): value for key, value in gps_data.items()}
 
-    raw_lat = gps_data["GPSLatitude"]
-    ref_lat = gps_data["GPSLatitudeRef"]
+    raw_lat = gps_data.get("GPSLatitude", None)
+    ref_lat = gps_data.get("GPSLatitudeRef", None)
+    if raw_lat is None or ref_lat is None: return None, None
     lat = convert_to_degress(raw_lat, ref_lat)
-    raw_lon = gps_data["GPSLongitude"]
-    ref_lon = gps_data["GPSLongitudeRef"]
+    raw_lon = gps_data.get("GPSLongitude", None)
+    ref_lon = gps_data.get("GPSLongitudeRef", None)
+    if raw_lon is None or ref_lon is None: return None, None
     lon = convert_to_degress(raw_lon, ref_lon) 
     return lat, lon 
     
