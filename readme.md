@@ -1,6 +1,6 @@
 # imse (Image Search)
 The goal of this project is to experiment with image search techniques for use in the civil engineering and surveying industries. 
-__update__: imse will expand to a generic high dimentional data search and aims to explore contrastive representation learning to build 
+__update__: imse will expand to a generic high dimentional data search and aims to explore contrastive representation learning to build search for many domains. 
 
 ## Examples of imse in action
 [Here](https://www.youtube.com/watch?v=DEC2m7qAmIg&list=PL0CXgB_3GSNdDHycHhvneodTndJwwY-uT) are two examples of using imse to seach large repositories of images. It uses [dask](https://dask.org/) to lazy load images making it scale to 1000's images of even on a regular images. All image embeddings are stored on disk using [faiss](https://github.com/facebookresearch/faiss) which is used to perform the similarity search. Currently imse uses a pretrained resnet to get embeddings. A simclr pretraining option is coming soon! It's showing get promise especially when the dataset under study contains images that are vastly different to the images in imagenet. Using contrastive representation learning the hope is to apply high dimensional search to other domains. Feel free to open issues with suggested domains in which search by sample query would be useful. 
